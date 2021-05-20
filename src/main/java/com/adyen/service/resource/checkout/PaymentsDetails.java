@@ -30,7 +30,7 @@ import java.util.Arrays;
 public class PaymentsDetails extends Resource {
 
     public PaymentsDetails(Service service) {
-        super(service, service.getClient().getConfig().getCheckoutEndpoint() + "/" + Client.CHECKOUT_API_VERSION +
+        super(service, service.getClient().getConfig().getCheckoutEndpoint() + "/" + Client.CHECKOUT_API_VERSION_CUSTOM +
                 "/payments/details", Arrays.asList("paymentData", "details"));
     }
 }

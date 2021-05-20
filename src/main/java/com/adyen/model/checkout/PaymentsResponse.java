@@ -24,68 +24,17 @@ package com.adyen.model.checkout;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Objects;
-
-import static com.adyen.util.Util.toIndentedString;
 
 /**
  * PaymentsResponse
  */
 public class PaymentsResponse extends AbstractPaymentsResponse<PaymentsResponse> {
 
-    @SerializedName("action")
-    private CheckoutPaymentsAction action;
-
-    /**
-     * Action to be taken for completing the payment.
-     *
-     * @return action
-     **/
-    public CheckoutPaymentsAction getAction() {
-        return action;
-    }
-
-    public void setAction(CheckoutPaymentsAction action) {
-        this.action = action;
-    }
-
-    public PaymentsResponse action(CheckoutPaymentsAction action) {
-        this.action = action;
-        return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        PaymentsResponse paymentsResponse = (PaymentsResponse) o;
-        return super.equals(paymentsResponse) && Objects.equals(this.action, paymentsResponse.action);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(action, super.hashCode());
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class PaymentsResponse {\n");
-        sb.append(super.toString());
-        sb.append("    action: ").append(toIndentedString(action)).append("\n");
-        sb.append("}");
-        return sb.toString();
-    }
 
     /**
      * The result of the payment. Possible values:

@@ -83,6 +83,27 @@ public abstract class AbstractPaymentsResponse<T extends AbstractPaymentsRespons
     @SerializedName("donationToken")
     private String donationToken;
 
+    @SerializedName("action")
+    private CheckoutPaymentsAction action;
+
+    /**
+     * Action to be taken for completing the payment.
+     *
+     * @return action
+     **/
+    public CheckoutPaymentsAction getAction() {
+        return action;
+    }
+
+    public void setAction(CheckoutPaymentsAction action) {
+        this.action = action;
+    }
+
+    public T action(CheckoutPaymentsAction action) {
+        this.action = action;
+        return (T) this;
+    }
+
     public T additionalData(Map<String, String> additionalData) {
         this.additionalData = additionalData;
         return (T) this;
@@ -326,12 +347,13 @@ public abstract class AbstractPaymentsResponse<T extends AbstractPaymentsRespons
                 && Objects.equals(this.threeDS2Result, response.threeDS2Result)
                 && Objects.equals(this.amount, response.amount)
                 && Objects.equals(this.order, response.order)
+                && Objects.equals(this.action, response.action)
                 && Objects.equals(this.donationToken, response.donationToken);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(additionalData, fraudResult, pspReference, refusalReason, resultCode, serviceError, authResponse, merchantReference, threeDS2Result, amount, order, donationToken);
+        return Objects.hash(additionalData, fraudResult, pspReference, refusalReason, resultCode, serviceError, authResponse, merchantReference, threeDS2Result, amount, order, donationToken, action);
     }
 
     @Override
@@ -351,6 +373,7 @@ public abstract class AbstractPaymentsResponse<T extends AbstractPaymentsRespons
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    order: ").append(toIndentedString(order)).append("\n");
         sb.append("    donationToken: ").append(toIndentedString(donationToken)).append("\n");
+        sb.append("    action: ").append(toIndentedString(action)).append("\n");
         return sb.toString();
     }
 
